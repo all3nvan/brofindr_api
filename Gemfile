@@ -5,6 +5,8 @@ gem 'rails', '4.1.6'
 
 gem 'rails-api'
 
+gem 'gcm'
+
 group :production do
 	gem 'pg'
 end
