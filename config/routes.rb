@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   post "/relationships/all", to: 'relationships#index'
   post "/relationships", to: 'relationships#create'
   post "/users/search", to: 'users#search'
-  post "/locations", to: 'location_session#create'
-  post "/locations/history", to: 'location_session#index'
+  post "/locations", to: 'location_sessions#create'
+  post "/locations/history", to: 'location_sessions#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
