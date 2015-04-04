@@ -17,9 +17,15 @@ class RelationshipsController < ApplicationController
     
     def create
         user_accounts = JSON.parse(request.body.read)
+        
         user = User.find_by account_name: user_accounts["account_name"]
         friend = User.find_by account_name: user_accounts["friend_account_name"]
-        Relationship.create(user: user, friend: friend)
+        
+        if Relationship.new(user: user, friend: friend).save
+            render :json => {"success" => true}
+        else
+        	render :json => {"success" => false}
+        end
     end
     
 end
