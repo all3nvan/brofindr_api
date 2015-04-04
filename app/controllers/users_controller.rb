@@ -7,8 +7,4 @@ class UsersController < ApplicationController
 		User.create(user)
 	end
 
-	def show
-		render :json => User.first
-	end
-
 end
