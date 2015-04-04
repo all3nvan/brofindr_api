@@ -1,6 +1,9 @@
 class LocationSessionsController < ApplicationController
 	require 'json'
 
+	def index
+	end
+
 	def create
 		location_session = JSON.parse(request.body.read)
 		location_session["sender_id"] = User.find_by(account_name: location_session["account_name"]).id
