@@ -16,6 +16,7 @@ class LocationSessionsController < ApplicationController
 		location_session = JSON.parse(request.body.read)
 		location_session["sender_id"] = User.find_by(account_name: location_session["account_name"]).id
 		location_session["recipient_id"] = User.find_by(account_name: location_session["receiver_name"]).id
+		sender = User.find_by(account_name: location_session["account_name"])
 		if LocationSession.new(location_session).save
 			gcm = GCM.new("AIzaSyCDatcW65tktZIcnlzWvI9_S4LqynOwTqM")
 			
@@ -26,7 +27,8 @@ class LocationSessionsController < ApplicationController
 							{
 								latitude: location_session["latitude"],
 								longitude: location_session["longitude"],
-								account_name: location_session["account_name"]
+								account_name: location_session["account_name"],
+								display_name: sender.display_name
 							}
 					  }
 			response = gcm.send([recipient_registration_id], options)
