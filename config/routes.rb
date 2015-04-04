@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'test#herp'
   resources :users, only: :create
+  get "/relationships/:account_name", to: 'relationships#index'
   resources :relationships, only: :create
 
   # The priority is based upon order of creation: first created -> highest priority.
