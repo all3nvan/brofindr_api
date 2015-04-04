@@ -2,7 +2,9 @@ class RelationshipsController < ApplicationController
     require 'json'
 
     def index
-    	user = User.find_by account_name: params[:account_name]
+    	incoming_user = JSON.parse(request.body.read)
+    	
+    	user = User.find_by account_name: incoming_user["account_name"]
 
     	friends = user.relationships.map do |relationship|
     		friend = User.find relationship.friend_id
