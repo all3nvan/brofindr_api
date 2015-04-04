@@ -22,10 +22,12 @@ class LocationSessionsController < ApplicationController
 			recipient_registration_id = User.find_by(account_name: location_session["receiver_name"])
 											.registration_id
 			options = {
-						data: {latitude: location_session["latitude"],
-							   longitude: location_session["longitude"],
-							   account_name: location_session["account_name"]
-						}
+						data:
+							{
+								latitude: location_session["latitude"],
+								longitude: location_session["longitude"],
+								account_name: location_session["account_name"]
+							}
 					  }
 			response = gcm.send([recipient_registration_id], options)
 			
