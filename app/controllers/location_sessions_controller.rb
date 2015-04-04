@@ -2,7 +2,14 @@ class LocationSessionsController < ApplicationController
 	require 'json'
 
 	def index
-		
+		response = JSON.parse(request.body.read)
+		location_sessions = LocationSession.where(receiver_name: response["account_name"])
+		history = location_sessions.map do |location_session|
+			{"sender_name" => location_session.account_name,
+			 "latitude" => location_session.latitude,
+			 "longitude" => location_session.longitude}
+		end
+		render :json => history
 	end
 
 	def create
