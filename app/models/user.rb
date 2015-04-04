@@ -4,4 +4,8 @@ class User < ActiveRecord::Base
 	
 	validates_presence_of :account_name, :display_name, :registration_id
 	validates_uniqueness_of :account_name, :registration_id
+	
+	def self.search_by_account_name(search_param)
+		 where("account_name LIKE ?", "%#{search_param}%")	
+	end
 end

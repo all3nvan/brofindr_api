@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :users, only: :create
   post "/relationships/all", to: 'relationships#index'
   post "/relationships", to: 'relationships#create'
+  post "/user/search", to: 'users#search'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
