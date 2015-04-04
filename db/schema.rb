@@ -11,13 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404014843) do
+ActiveRecord::Schema.define(version: 20150404184045) do
 
   create_table "location_sessions", force: true do |t|
-    t.string  "sender_lat"
-    t.string  "sender_long"
+    t.string  "latitude"
+    t.string  "longitude"
     t.integer "sender_id"
     t.integer "recipient_id"
+    t.string  "account_name"
+    t.string  "receiver_name"
   end
 
   create_table "relationships", force: true do |t|
