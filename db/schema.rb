@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150404013623) do
+ActiveRecord::Schema.define(version: 20150404014843) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "location_sessions", force: true do |t|
+    t.string  "sender_lat"
+    t.string  "sender_long"
+    t.integer "sender_id"
+    t.integer "recipient_id"
+  end
+
+  create_table "relationships", force: true do |t|
+    t.integer "user_id"
+    t.integer "friend_id"
+  end
 
   create_table "users", force: true do |t|
     t.string "registration_id"
