@@ -2,6 +2,7 @@ class LocationSessionsController < ApplicationController
 	require 'json'
 
 	def index
+		
 	end
 
 	def create
@@ -19,12 +20,12 @@ class LocationSessionsController < ApplicationController
 							   account_name: location_session["account_name"]
 						}
 					  }
-			response = gcm.send(recipient_registration_id, options)
+			response = gcm.send([recipient_registration_id], options)
 			
-			if response["status"] == 200
-				render :json => {"success" => true }
+			if response[:status_code] == 200
+				render :json => {"success" => true}
 			else
-				render :json => {"success" => false }
+				render :json => {"success" => false}
 			end
 		else
 			render :json => {"success" => false}
