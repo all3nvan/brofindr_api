@@ -13,9 +13,9 @@ class UsersController < ApplicationController
 
 	def search
 		search_param = JSON.parse(request.body.read)
-		results = User.search_by_account_name(search_param["account_name"])
+		search_results = User.search_by_display_name(search_param["display_name"])
 		
-		accounts_found = results.map do |result|
+		accounts_found = search_results.map do |result|
 			{account_name: result.account_name,
 			 display_name: result.display_name}
 		end
